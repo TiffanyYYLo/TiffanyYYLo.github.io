@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tiffany Y. Y. Lo — Probability Theory</title>
+<meta name="description" content="Tiffany Yin Yuan Lo, postdoctoral fellow in probability theory at Stockholm University. Random graphs, preferential attachment, Stein's method.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@300;500&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F6F6F3;
+    --ink:#15171C;
+    --soft:#5A5F69;
+    --rule:#DCDCD5;
+    --accent:#2F5D8C;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font:400 1rem/1.6 "IBM Plex Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:44rem;margin:0 auto;padding:3.5rem 1.5rem 6rem}
+
+  /* header */
+  header{display:flex;align-items:flex-start;gap:2rem;
+    padding-bottom:1.75rem;border-bottom:1px solid var(--rule);margin-bottom:1rem}
+  header>div{flex:1 1 auto;min-width:0}
+  .portrait{width:11rem;height:11rem;flex:0 0 auto;object-fit:cover;border-radius:2px;
+    display:block;background:var(--rule);margin-left:auto}
+  h1{font:300 2.25rem/1.1 "Spectral",Georgia,serif;letter-spacing:-.015em;margin:0 0 .6rem}
+  .role{color:var(--soft);font-size:.9375rem;margin:0 0 1.1rem}
+  .links{display:flex;flex-wrap:wrap;gap:0 1rem}
+  .links a{font:500 .75rem/1 "IBM Plex Mono",monospace;letter-spacing:.06em;
+    text-transform:uppercase;text-decoration:none}
+  .links a:hover{text-decoration:underline}
+
+  /* nav */
+  nav{display:flex;flex-wrap:wrap;gap:0 1.25rem;padding-bottom:2.5rem}
+  nav a{font:500 .75rem/1 "IBM Plex Mono",monospace;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--soft);text-decoration:none;padding:.35rem 0}
+  nav a:hover,nav a:focus-visible{color:var(--accent)}
+
+  /* main */
+  section{margin-bottom:3.5rem}
+  section:last-of-type{margin-bottom:2.5rem}
+  h2{font:500 .75rem/1 "IBM Plex Mono",monospace;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--soft);margin:0 0 1.25rem}
+  p{margin:0 0 .9rem}
+
+  /* publications — dense rows */
+  ol.pubs{list-style:none;margin:0;padding:0;counter-reset:pub 10}
+  ol.pubs-p{counter-reset:pub 9}
+  ol.pubs-j{counter-reset:pub 6}
+  ol.pubs li{
+    counter-increment:pub -1;
+    display:grid;grid-template-columns:1.75rem 1fr;gap:.75rem;
+    padding:.7rem 0;border-top:1px solid var(--rule);
+  }
+  ol.pubs li:last-child{border-bottom:1px solid var(--rule)}
+  ol.pubs li::before{
+    content:counter(pub);
+    font:400 .8125rem/1.7 "IBM Plex Mono",monospace;color:var(--soft);text-align:right;
+  }
+  .t{font-weight:500;line-height:1.45;display:block}
+  .t a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule)}
+  .t a:hover{color:var(--accent);border-color:var(--accent)}
+  .m{color:var(--soft);font-size:.875rem;line-height:1.5;display:block;margin-top:.15rem}
+  .m em{font-style:italic}
+  /* talks + service */
+  ul.tight{list-style:none;margin:0;padding:0}
+  ul.tight li{padding:.3rem 0;font-size:.9375rem;border-top:1px solid var(--rule)}
+  ul.tight li:first-child{border-top:0}
+  ul.tight .where{color:var(--soft)}
+
+  /* teaching */
+  dl{margin:0}
+  dt{font-weight:500;margin-top:1.1rem}
+  dt:first-child{margin-top:0}
+  dd{margin:.1rem 0 0;color:var(--soft);font-size:.9375rem}
+
+  footer{border-top:1px solid var(--rule);padding-top:.9rem;
+    color:var(--soft);font-size:.8125rem}
+
+  @media (max-width:40rem){
+    .wrap{padding:2.5rem 1.25rem 4rem}
+    header{flex-direction:column;align-items:flex-end;gap:1.25rem}
+    .portrait{width:9rem;height:9rem}
+    h1{font-size:1.875rem}
+    ol.pubs li{grid-template-columns:1.5rem 1fr;gap:.5rem}
+  }
+  a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div>
+      <h1>Tiffany Y. Y. Lo</h1>
+      <p class="role">Postdoctoral fellow · Department of Mathematics · Stockholm University</p>
+      <div class="links">
+        <a href="https://scholar.google.com/citations?user=hFmyu5sAAAAJ&amp;hl=en">Google Scholar</a>
+        <a href="https://orcid.org/0000-0003-4762-8914">ORCID</a>
+      </div>
+    </div>
+    <img src="photo.jpg" alt="Tiffany Y. Y. Lo" class="portrait" width="640" height="640">
+  </header>
+
+  <nav aria-label="Sections">
+    <a href="#about">About</a>
+    <a href="#inprep">In preparation</a>
+    <a href="#papers">Preprints</a>
+    <a href="#published">Published</a>
+    <a href="#talks">Talks</a>
+    <a href="#teaching">Teaching</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+    <section id="about">
+      <h2>About</h2>
+      <p>I am a researcher working in probability theory. I am currently a postdoc at Stockholm University, supported by the Sverker Lerheden Foundation. My mentors are Maria Deijfen and Daniel Ahlberg. Before this I was a postdoc at Uppsala University with Cecilia Holmgren and Svante Janson, and I completed my PhD at the University of Melbourne under Nathan Ross.</p>
+      <p>Much of my work concerns fluctuations emerging from random structures such as evolving random graphs and percolation models, where the relevant quantities are often sums with long-range dependence. A tool that I frequently reach for is Stein's method. More broadly, I am also interested in graph limits and their interplay with structural properties.</p>
+    </section>
+
+    <section id="inprep">
+      <h2>In preparation</h2>
+      <ol class="pubs">
+        <li>
+          <div>
+            <span class="t">Coloured graphons, graph partitions and modularity</span>
+            <span class="m">With S. Janson, C. McDiarmid, A. Skeja and F. Skerman</span>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section id="papers">
+      <h2>Preprints</h2>
+      <ol class="pubs pubs-p">
+        <li>
+          <div>
+            <span class="t">Gaussian fluctuations in mean field stable matchings</span>
+            <span class="m">With D. Ahlberg and M. Deijfen (2025) · in revision in <em>Electronic Journal of Probability</em> · <a href="http://arxiv.org/abs/2510.22701">arXiv</a></span>
+          </div>
+        </li>
+        <li>
+          <div>
+            <span class="t">Isolated vertices in two duplication–divergence models with edge deletion</span>
+            <span class="m">With G. Reinert and R. Zhang (2025) · <a href="https://arxiv.org/abs/2501.11077">arXiv</a></span>
+          </div>
+        </li>
+        <li>
+          <div>
+            <span class="t">The number of descendants in a preferential attachment graph</span>
+            <span class="m">With S. Janson (2024) · in revision in <em>Random Structures &amp; Algorithms</em> · <a href="https://arxiv.org/abs/2412.13975">arXiv</a></span>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section id="published">
+      <h2>Published papers</h2>
+      <ol class="pubs pubs-j">
+        <li>
+          <div>
+            <span class="t"><a href="https://www.cambridge.org/core/journals/combinatorics-probability-and-computing/article/approximation-of-subgraph-counts-in-the-uniform-attachment-model/BDFB2B1AE2914E86E0BDD6CA981952A7">Approximation of subgraph counts in the uniform attachment model</a></span>
+            <span class="m">With J. Björklund, C. Holmgren and S. Janson (2025) · <em>Combinatorics, Probability and Computing</em> 34, 90–114</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            <span class="t"><a href="https://academic.oup.com/comnet/article/12/4/cnae032/7727753">Properties of the 'friend of a friend' model for network growth</a></span>
+            <span class="m">With W. Levens and D. J. T. Sumpter (2024) · <em>Journal of Complex Networks</em> 12</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            <span class="t"><a href="https://www.sciencedirect.com/science/article/pii/S0167715224000798">On the rate of normal approximation for Poisson continuum percolation</a></span>
+            <span class="m">With A. Xia (2024) · <em>Statistics and Probability Letters</em> 210</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            <span class="t"><a href="https://www.cambridge.org/core/journals/advances-in-applied-probability/article/abs/local-weak-limit-of-preferential-attachment-random-trees-with-additive-fitness/64F504A21ABD3694A1856416D87755B6">Local weak limit of preferential attachment random trees with additive fitness</a></span>
+            <span class="m">2024 · <em>Advances in Applied Probability</em> 56, 785–824 · see also the Applied Probability Trust collection on preferential attachment networks</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            <span class="t"><a href="https://alea.impa.br/articles/v19/19-04.pdf">The expected degree distribution in transient duplication–divergence models</a></span>
+            <span class="m">With A. D. Barbour (2022) · <em>ALEA</em> 19, 69–107</span>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section id="talks">
+      <h2>Talks</h2>
+      <ul class="tight">
+        <li>Al-Khwarizmi Applied Mathematics Webinar <span class="where">· Sep 2026</span></li>
+        <li>Stein's Method and Networks, Oxford <span class="where">· Jul 2026</span></li>
+        <li>Mathematical Statistics Seminar, Stockholm <span class="where">· Nov 2025</span></li>
+        <li>SPA, generalised preferential attachment session, Wrocław <span class="where">· Jul 2025</span></li>
+        <li>Evolving and Spatial Random Graphs, Bayrischzell <span class="where">· Jun 2025</span></li>
+        <li>Probability and Combinatorics Seminar, Uppsala <span class="where">· Nov 2024</span></li>
+        <li>Mathematical Statistics Seminar, Stockholm <span class="where">· Oct 2024</span></li>
+        <li>Stein's Method and Stochastic Geometry, Hamburg <span class="where">· Sep 2024</span></li>
+        <li>Interacting Random Systems Seminar, WIAS Berlin <span class="where">· Oct 2023</span></li>
+        <li>Sparse Inference on Complex Networks, Lugano <span class="where">· Jun 2023</span></li>
+        <li>NORDSTAT, random graphs session, Gothenburg <span class="where">· Jun 2023</span></li>
+        <li>Random Graphs, Oberwolfach <span class="where">· Mar 2023</span></li>
+        <li>Probability Seminar, Oxford <span class="where">· Feb 2023</span></li>
+        <li>Probability and Combinatorics Seminar, Uppsala <span class="where">· Sep 2022</span></li>
+      </ul>
+    </section>
+
+    <section id="teaching">
+      <h2>Teaching</h2>
+      <dl>
+        <dt>Statistics for Engineers</dt>
+        <dd>Teaching assistant · Uppsala University</dd>
+
+        <dt>Stochastic Modelling · Statistics · Probability for Statistics · Methods of Mathematical Statistics · A First Course in Statistical Learning</dt>
+        <dd>Tutor, 2018–2022 · University of Melbourne</dd>
+
+        <dt>Mini-courses, Probability reading group</dt>
+        <dd>Instructor · University of Melbourne</dd>
+        <dd>The Foster–Lyapunov–Tweedie approach for classifying discrete time Markov chains (2021)</dd>
+        <dd>A construction of the Dirichlet process (2020)</dd>
+        <dd>A simple proof of de Finetti's theorem for 0–1 valued exchangeable random variables (2019)</dd>
+      </dl>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>firstname.y.y.lastname@math.su.se<br>
+      Room B1359, Albano, Albanovägen 28<br>
+      Stockholm University, Stockholm</p>
+    </section>
+
+    <footer>Last updated August 2026.</footer>
+
+</div>
+</body>
+</html>
