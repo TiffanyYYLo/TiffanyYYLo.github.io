@@ -51,7 +51,6 @@
 
   /* publications — dense rows */
   ol.pubs{list-style:none;margin:0;padding:0;counter-reset:pub 10}
-  ol.pubs-p{counter-reset:pub 9}
   ol.pubs-j{counter-reset:pub 6}
   ol.pubs li{
     counter-increment:pub -1;
@@ -68,7 +67,8 @@
   .t a:hover{color:var(--accent);border-color:var(--accent)}
   .m{color:var(--soft);font-size:.875rem;line-height:1.5;display:block;margin-top:.15rem}
   .m em{font-style:italic}
-  /* talks + service */
+
+  /* talks */
   ul.tight{list-style:none;margin:0;padding:0}
   ul.tight li{padding:.3rem 0;font-size:.9375rem;border-top:1px solid var(--rule)}
   ul.tight li:first-child{border-top:0}
@@ -110,7 +110,6 @@
 
   <nav aria-label="Sections">
     <a href="#about">About</a>
-    <a href="#inprep">In preparation</a>
     <a href="#papers">Preprints</a>
     <a href="#published">Published</a>
     <a href="#talks">Talks</a>
@@ -126,23 +125,23 @@
 
     <section id="papers">
       <h2>Preprints</h2>
-      <ol class="pubs pubs-p">
+      <ol class="pubs">
         <li>
           <div>
             <span class="t">Graphon colourings and limits of graph partitions</span>
-            <span class="m">With S. Janson, C. McDiarmid, A. Skeja and F. Skerman</em> · <a href="https://arxiv.org/abs/2610.38599">arXiv</a></span>
+            <span class="m">With S. Janson, C. McDiarmid, A. Skeja and F. Skerman (2026) · <a href="https://arxiv.org/abs/2610.38599">arXiv</a></span>
           </div>
         </li>
         <li>
           <div>
             <span class="t">Gaussian fluctuations in mean field stable matchings</span>
-            <span class="m">With D. Ahlberg and M. Deijfen (2025) · in revision in <em>Electronic Journal of Probability</em> · <a href="http://arxiv.org/abs/2510.22701">arXiv</a></span>
+            <span class="m">With D. Ahlberg and M. Deijfen (2025) · in revision in <em>Electronic Journal of Probability</em> · <a href="https://arxiv.org/abs/2510.22701">arXiv</a></span>
           </div>
         </li>
         <li>
           <div>
             <span class="t">Isolated vertices in two duplication–divergence models with edge deletion</span>
-            <span class="m">With G. Reinert and R. Zhang (2025) · in revision in ALEA <a href="https://arxiv.org/abs/2501.11077">arXiv</a></span>
+            <span class="m">With G. Reinert and R. Zhang (2025) · in revision in <em>ALEA</em> · <a href="https://arxiv.org/abs/2501.11077">arXiv</a></span>
           </div>
         </li>
         <li>
@@ -216,7 +215,7 @@
       <dl>
         <dt>Introduction to Stein's method</dt>
         <dd>Instructor · Stockholm University</dd>
-        
+
         <dt>Statistics for Engineers</dt>
         <dd>Teaching assistant · Uppsala University</dd>
 
